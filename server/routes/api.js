@@ -45,7 +45,7 @@ router.post('/register', (req, res) => {
             }
             let token = jwt.sign(payload, 'secretKey')
             res.status(200).send({
-                token
+                token, payload
             })
         }
     })
@@ -101,26 +101,24 @@ router.put('/account', (req, res) => {
     })
 })
 
-// router.delete('/account/:id', (req, res) => {
-//     User.remove({
-//         _id: req.params.id
-//     }, function (err, res) {
-//         if (err) {
-//             return res.status(401).send('Error')
-//         } else {
-//             res.status(200).send('success')
-//         }
-//     })
-// })
+router.delete('/account/:id', (req, res) => {    
+    User.remove({
+        _id: req.params.id
+    }, function (err) {
+        if (err) {            
+             console.log('error');      
+        }
+    })
+})
 
-router.delete('/account/:id', function (req, res) {
+// router.delete('/account/:id', function (req, res) {
 
-    User.findByIdAndRemove(req.params.id, function (err, user) {
-        if (err) 
-        return res.status(500).send("There was a problem deleting the user.");
-        res.status(200).send("User was deleted");
-    });
-});
+//     User.findByIdAndRemove(req.params._id, function (err, user) {
+//         if (err) 
+//         return res.status(500).send("There was a problem deleting the user.");
+//         res.status(200).send("User was deleted");
+//     });
+// });
 
 router.get('/players', (req, res) => {
     let players = [{

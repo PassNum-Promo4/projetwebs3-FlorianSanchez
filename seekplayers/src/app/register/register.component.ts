@@ -17,6 +17,7 @@ export class RegisterComponent implements OnInit {
     .subscribe(
       res => {console.log(res);
       localStorage.setItem('token', res.token);
+      localStorage.setItem('_id', res.payload.subject);
       this._router.navigate(['/special']);
     },
       err => console.log(err)

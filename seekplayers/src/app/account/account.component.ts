@@ -23,8 +23,10 @@ export class AccountComponent extends LoginComponent implements OnInit {
 
   modifyAccount() {
     let id = localStorage.getItem('_id');
-    let user = { 'new_UserData': this.UserData,
-    '_id': id };
+    let user = {
+      'new_UserData': this.UserData,
+      '_id': id
+    };
 
     this._auth.modifyAccount(user).subscribe(
       res => {
@@ -44,6 +46,8 @@ export class AccountComponent extends LoginComponent implements OnInit {
       },
       err => console.log(err)
     );
+    localStorage.removeItem('_id');
+    localStorage.removeItem('token');
   }
 
   ngOnInit() {
