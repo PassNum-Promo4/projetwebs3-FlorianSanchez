@@ -1,8 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 import { tokenKey } from '@angular/core/src/view';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { LoginComponent } from '../login/login.component';
+import { inject } from '@angular/core/testing';
+import { HttpClient } from '@angular/common/http';
+
+
 
 @Component({
   selector: 'app-account',
@@ -18,11 +22,22 @@ export class AccountComponent extends LoginComponent implements OnInit {
   }
 
   modifyAccount() {
-    let id = localStorage.getItem('token');
+    let id = localStorage.getItem('_id');
     let user = { 'new_UserData': this.UserData,
-    'token': id };
+    '_id': id };
 
     this._auth.modifyAccount(user).subscribe(
+      res => {
+        console.log(res);
+        this._router.navigate(['/login']);
+      },
+      err => console.log(err)
+    );
+  }
+
+  deleteAccount() {
+    let id = localStorage.getItem('_id');
+    this._auth.deleteAccount(id).subscribe(
       res => {
         console.log(res);
         this._router.navigate(['/login']);

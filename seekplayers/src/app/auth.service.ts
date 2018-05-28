@@ -9,7 +9,9 @@ export class AuthService {
   private _loginUrl = 'http://localhost:3000/api/login';
   private _accountUrl = 'http://localhost:3000/api/account';
 
-  constructor(private http: HttpClient, private _router: Router) { }
+  constructor(private http: HttpClient, private _router: Router) {
+   }
+
 
   registerUser(user) {
     return this.http.post<any>(this._registerUrl, user);
@@ -35,4 +37,8 @@ export class AuthService {
   modifyAccount(user) {
     return this.http.put<any>(this._accountUrl, user);
   }
+
+  deleteAccount(user) {
+    return this.http.delete<any>(this._accountUrl + '/' + user);
+    }
 }

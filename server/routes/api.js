@@ -70,7 +70,8 @@ router.post('/login', (req, res) => {
                     }
                     let token = jwt.sign(payload, 'secretKey')
                     res.status(200).send({
-                        token
+                        token,
+                        user
                     })
                 }
             }
@@ -80,21 +81,46 @@ router.post('/login', (req, res) => {
 
 router.put('/account', (req, res) => {
     let userData = req.body;
-    User.findOne({_id: userData._id}, (error, res) => {
+    User.findOne({
+        _id: userData._id
+    }, (error, user) => {
         if (error) {
             console.log(error);
         } else {
             user.email = userData.new_UserData.email;
             user.password = userData.new_UserData.password;
-            user.save ( function(err) {
+            user.save(function (err) {
                 if (err) {
                     res.send(err)
                 }
-                res.send({message: 'Account updated'})
+                res.send({
+                    message: 'Account updated'
+                })
             })
         }
     })
 })
+
+// router.delete('/account/:id', (req, res) => {
+//     User.remove({
+//         _id: req.params.id
+//     }, function (err, res) {
+//         if (err) {
+//             return res.status(401).send('Error')
+//         } else {
+//             res.status(200).send('success')
+//         }
+//     })
+// })
+
+router.delete('/account/:id', function (req, res) {
+
+    User.findByIdAndRemove(req.params.id, function (err, user) {
+        if (err) 
+        return res.status(500).send("There was a problem deleting the user.");
+        res.status(200).send("User was deleted");
+    });
+});
 
 router.get('/players', (req, res) => {
     let players = [{
