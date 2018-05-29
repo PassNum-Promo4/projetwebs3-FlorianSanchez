@@ -6,6 +6,7 @@ import { RegisterComponent } from './register/register.component';
 import { SpecialPlayersComponent } from './special-players/special-players.component';
 import { AuthGuard } from './auth.guard';
 import { AccountComponent } from './account/account.component';
+import { NewuserComponent } from './newuser/newuser.component';
 
 const routes: Routes = [
     {
@@ -34,6 +35,10 @@ const routes: Routes = [
         path: 'account',
         component: AccountComponent,
         canActivate: [AuthGuard]
+    },
+    {
+        path: 'newuser',
+        component: NewuserComponent
     }
 ];
 @NgModule({

@@ -13,6 +13,7 @@ import { SpecialPlayersComponent } from './special-players/special-players.compo
 import { AuthGuard } from './auth.guard';
 import { TokenInterceptorService } from './token-interceptor.service';
 import { AccountComponent } from './account/account.component';
+import { NewuserComponent } from './newuser/newuser.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AccountComponent } from './account/account.component';
     LoginComponent,
     PlayersComponent,
     SpecialPlayersComponent,
-    AccountComponent
+    AccountComponent,
+    NewuserComponent
   ],
   imports: [
     BrowserModule,

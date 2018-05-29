@@ -2,6 +2,7 @@ const express = require('express')
 const jwt = require('jsonwebtoken')
 const router = express.Router()
 const User = require('../models/user')
+const Player = require('../models/player')
 const mongoose = require('mongoose')
 const db = "mongodb://userazuh:okokyt@ds137600.mlab.com:37600/seekplayersdb"
 
@@ -45,7 +46,8 @@ router.post('/register', (req, res) => {
             }
             let token = jwt.sign(payload, 'secretKey')
             res.status(200).send({
-                token, payload
+                token,
+                payload
             })
         }
     })
@@ -79,6 +81,7 @@ router.post('/login', (req, res) => {
     })
 })
 
+
 router.put('/account', (req, res) => {
     let userData = req.body;
     User.findOne({
@@ -101,93 +104,41 @@ router.put('/account', (req, res) => {
     })
 })
 
-router.delete('/account/:id', (req, res) => {    
+router.delete('/account/:id', (req, res) => {
     User.remove({
         _id: req.params.id
     }, function (err) {
-        if (err) {            
-             console.log('error');      
+        if (err) {
+            console.log('error');
         }
     })
 })
 
-// router.delete('/account/:id', function (req, res) {
-
-//     User.findByIdAndRemove(req.params._id, function (err, user) {
-//         if (err) 
-//         return res.status(500).send("There was a problem deleting the user.");
-//         res.status(200).send("User was deleted");
-//     });
-// });
-
 router.get('/players', (req, res) => {
-    let players = [{
-            "_id": "1",
-            "name": "Thibault",
-            "description": "im thibault",
-            "date": "2016-03-12T11:00:00Z"
-        },
-        {
-            "_id": "2",
-            "name": "Marine",
-            "description": "im marine",
-            "date": "2016-03-12T11:00:00Z"
-        },
-        {
-            "_id": "3",
-            "name": "Momo",
-            "description": "im momo",
-            "date": "2016-03-12T11:00:00Z"
-        },
-        {
-            "_id": "4",
-            "name": "Florian",
-            "description": "im florian",
-            "date": "2016-03-12T11:00:00Z"
-        },
-        {
-            "_id": "5",
-            "name": "Amanda",
-            "description": "im amanda",
-            "date": "2016-03-12T11:00:00Z"
-        }
-    ]
-    res.json(players)
+    Player.find(function (err, players){
+        if (err) {
+            res.send(err)
+        }res.json(players)
+    })  
 })
 
 router.get('/special', verifyToken, (req, res) => {
-    let specialPlayers = [{
-            "_id": "1",
-            "name": "Thibault",
-            "description": "im thibault",
-            "date": "2016-03-12T11:00:00Z"
-        },
-        {
-            "_id": "2",
-            "name": "Marine",
-            "description": "im marine",
-            "date": "2016-03-12T11:00:00Z"
-        },
-        {
-            "_id": "3",
-            "name": "Momo",
-            "description": "im momo",
-            "date": "2016-03-12T11:00:00Z"
-        },
-        {
-            "_id": "4",
-            "name": "Florian",
-            "description": "im florian",
-            "date": "2016-03-12T11:00:00Z"
-        },
-        {
-            "_id": "5",
-            "name": "Amanda",
-            "description": "im amanda",
-            "date": "2016-03-12T11:00:00Z"
-        }
-    ]
+    let specialPlayers = []
     res.json(specialPlayers)
 })
 
+router.post('/newuser', (req, res) => {
+    let cardData = req.body
+    let player = new Player(cardData)
+    player.save((err, new_Player) => {
+        if (err) {
+            console.log(err);
+        } else {
+            User.findOne({_id: cardData.creator}, function (err, user){
+                user.playercard = new_Player;
+            })
+        }
+    })
+    res.send('Player card created')
+})
 module.exports = router

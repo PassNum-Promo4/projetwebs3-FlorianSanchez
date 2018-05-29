@@ -1,15 +1,21 @@
 <div class="row mt-5">
-    <div class="col-md-4 mb-3" *ngFor="let player of players">
-      <div class="card text-center">
-        <div class="card-body">
-          <h5 class="card-title">{{player.name}}</h5>
-          <p class="card-text">{{player.description}}</p>
-          <a href="#" class="btn btn-primary">Buy Tickets</a>
-        </div>
-        <div class="card-footer text-muted">
-          {{player.date | date:'shortDate'}}
-        </div>
-        
+  <div class="col-md-4 mb-3" *ngFor="let player of players">
+    <div class="card text-center">
+      <div class="card-header">{{player.pseudo}}
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{{player.rank}}</h5>
+        <p class="card-text">{{player.language}}</p>
+
+        <a href="#" class="btn btn-primary">Buy Tickets</a>
+      </div>
+      <div class="card-footer text-muted">
+        {{player.ratio}}
       </div>
     </div>
   </div>
+</div>
+

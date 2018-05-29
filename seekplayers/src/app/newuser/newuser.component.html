@@ -1,0 +1,31 @@
+<div class="row pt-5">
+    <div class="col-md-6 mx-auto">
+      <div class="card rounded-0">
+        <div class="card-header">
+          <h3 class="mb-0">Create my card</h3>
+        </div>
+        <div class="card-body">
+          <form class="form">
+            <div class="form-group">
+              <label for="">Pseudonyme</label>
+              <input [(ngModel)]="cardData.pseudo" name="pseudo" type="text" class="form-control rounded-0" required>
+            </div>
+            <div class="form-group">
+              <label for="">Rank</label>
+              <input [(ngModel)]="cardData.rank" name="rank" type="text" class="form-control rounded-0" required>
+            </div>
+            <div class="form-group">
+                <label for="">Language</label>
+                <input [(ngModel)]="cardData.language" name="language" type="text" class="form-control rounded-0" required>
+              </div>
+              <div class="form-group">
+                  <label for="">Ratio</label>
+                  <input [(ngModel)]="cardData.ratio" name="ratio" type="text" class="form-control rounded-0" required>
+                </div>
+            <button (click)="postPlayerData()" type="button" class="btn btn-primary float-right">Create</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
