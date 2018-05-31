@@ -11,10 +11,29 @@ import { log } from 'util';
 })
 export class NewuserComponent implements OnInit {
 
+
+
   cardData = {
     'creator': ''
   };
   constructor(public _auth: AuthService, public _router: Router, public _playerService: PlayerService) { }
+
+  modifyCard() {
+    const creator = localStorage.getItem('_id');
+    this.cardData.creator = creator;
+    this._playerService.modifyCard(this.cardData).subscribe(
+      res => console.log(res),
+      err => console.log(err)
+    );
+  }
+
+  deleteCard() {
+    const id = localStorage.getItem('_id');
+    this._playerService.deleteCard(id).subscribe(
+      res => console.log(res),
+      err => console.log(err)
+    );
+  }
 
   postPlayerData() {
     const creator = localStorage.getItem('_id');
@@ -26,6 +45,7 @@ export class NewuserComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
 
 }

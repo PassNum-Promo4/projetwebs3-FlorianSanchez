@@ -85,13 +85,13 @@ router.post('/login', (req, res) => {
 router.put('/account', (req, res) => {
     let userData = req.body;
     User.findOne({
-        _id: userData._id
+        _id: userData.id
     }, (error, user) => {
         if (error) {
             console.log(error);
         } else {
-            user.email = userData.new_UserData.email;
-            user.password = userData.new_UserData.password;
+            user.email = userData.email;
+            user.password = userData.password;
             user.save(function (err) {
                 if (err) {
                     res.send(err)
@@ -104,6 +104,31 @@ router.put('/account', (req, res) => {
     })
 })
 
+router.put('/newuser', (req, res) => {
+    let newCardData = req.body;
+    Player.findOne({
+        creator: newCardData.creator
+    }, (err, player) => {
+        if (err) {
+            res.send(err);
+        } else {
+            player.pseudo = newCardData.pseudo;
+            player.rank = newCardData.rank;
+            player.language = newCardData.language;
+            player.ratio = newCardData.ratio;
+            player.save(function (error) {
+                if (error) {
+                    res.send(error)
+                }
+                res.send({
+                    message: 'Player updated'
+                })
+            })
+        }
+    })
+})
+
+
 router.delete('/account/:id', (req, res) => {
     User.remove({
         _id: req.params.id
@@ -115,16 +140,30 @@ router.delete('/account/:id', (req, res) => {
 })
 
 router.get('/players', (req, res) => {
-    Player.find(function (err, players){
+    Player.find(function (err, players) {
         if (err) {
             res.send(err)
-        }res.json(players)
-    })  
+        }
+        res.json(players)
+    })
 })
 
 router.get('/special', verifyToken, (req, res) => {
     let specialPlayers = []
     res.json(specialPlayers)
+})
+
+
+router.delete('/newuser/:id', (req, res) => {
+    let id = req.params.id;
+    Player.remove({
+        creator: id
+    }, function (err, message) {
+        if (err) {
+            res.send(err);
+        }
+        res.send("youpi");
+    })
 })
 
 router.post('/newuser', (req, res) => {
@@ -134,11 +173,14 @@ router.post('/newuser', (req, res) => {
         if (err) {
             console.log(err);
         } else {
-            User.findOne({_id: cardData.creator}, function (err, user){
+            User.findOne({
+                _id: cardData.creator
+            }, function (err, user) {
                 user.playercard = new_Player;
             })
         }
     })
     res.send('Player card created')
 })
+
 module.exports = router

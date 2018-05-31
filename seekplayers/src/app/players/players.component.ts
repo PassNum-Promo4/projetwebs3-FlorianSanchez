@@ -8,12 +8,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./players.component.css']
 })
 export class PlayersComponent implements OnInit {
-  cardData = {
-    'creator': ''
-  };
+
   players = [];
   constructor(private _playerService: PlayerService, public _router: Router) { }
-
 
   ngOnInit() {
     this._playerService.getPlayers()

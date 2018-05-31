@@ -2,7 +2,10 @@
     <div class="col-md-6 mx-auto">
       <div class="card rounded-0">
         <div class="card-header">
-          <h3 class="mb-0">Create my card</h3>
+            <button (click)="deleteCard()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          <h3 class="mb-0">My card</h3>
         </div>
         <div class="card-body">
           <form class="form">
@@ -23,6 +26,7 @@
                   <input [(ngModel)]="cardData.ratio" name="ratio" type="text" class="form-control rounded-0" required>
                 </div>
             <button (click)="postPlayerData()" type="button" class="btn btn-primary float-right">Create</button>
+            <button (click)="modifyCard()" type="button" class="btn btn-info float-left">Modify</button>
           </form>
         </div>
       </div>

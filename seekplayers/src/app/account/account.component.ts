@@ -16,19 +16,18 @@ import { HttpClient } from '@angular/common/http';
 
 export class AccountComponent extends LoginComponent implements OnInit {
 
-  UserData = {};
+  UserData = {
+    'id': ''
+    };
   constructor(public _auth: AuthService, public _router: Router) {
     super(_auth, _router);
   }
 
   modifyAccount() {
-    let id = localStorage.getItem('_id');
-    let user = {
-      'new_UserData': this.UserData,
-      '_id': id
-    };
+    const id = localStorage.getItem('_id');
+    this.UserData.id = id;
 
-    this._auth.modifyAccount(user).subscribe(
+    this._auth.modifyAccount(this.UserData).subscribe(
       res => {
         console.log(res);
         this._router.navigate(['/login']);
@@ -38,7 +37,7 @@ export class AccountComponent extends LoginComponent implements OnInit {
   }
 
   deleteAccount() {
-    let id = localStorage.getItem('_id');
+    const id = localStorage.getItem('_id');
     this._auth.deleteAccount(id).subscribe(
       res => {
         console.log(res);

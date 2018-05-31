@@ -20,4 +20,13 @@ export class PlayerService {
   postPlayerData(cardData) {
     return this.http.post<any>(this._newUserUrl, cardData);
   }
+
+  deleteCard(id) {
+    return this.http.delete<any>(this._newUserUrl + '/' + id);
+  }
+
+  modifyCard(newCardData) {
+    return this.http.put<any>(this._newUserUrl, newCardData);
+  }
+
 }
