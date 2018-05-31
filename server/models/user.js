@@ -7,7 +7,7 @@ const userSchema = new Schema({
     playercard: {
         type : mongoose.Schema.Types.ObjectId,
         ref: 'infoplayers'
-    } 
+    }
 })
 
 module.exports = mongoose.model('user', userSchema, 'users')

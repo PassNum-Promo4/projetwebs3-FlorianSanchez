@@ -3,7 +3,9 @@ const jwt = require('jsonwebtoken')
 const router = express.Router()
 const User = require('../models/user')
 const Player = require('../models/player')
+const request = require('request');
 const mongoose = require('mongoose')
+const champions = require('../champions')
 const db = "mongodb://userazuh:okokyt@ds137600.mlab.com:37600/seekplayersdb"
 
 mongoose.connect(db, err => {
@@ -32,6 +34,10 @@ function verifyToken(req, res, next) {
 
 router.get('/', (req, res) => {
     res.send('From API route')
+});
+
+router.get('/champions', (req, res) => {
+    res.json({ champions });
 })
 
 router.post('/register', (req, res) => {
@@ -115,6 +121,7 @@ router.put('/newuser', (req, res) => {
             player.pseudo = newCardData.pseudo;
             player.rank = newCardData.rank;
             player.language = newCardData.language;
+            player.mainchamp = newCardData.mainchamp;
             player.ratio = newCardData.ratio;
             player.save(function (error) {
                 if (error) {
@@ -156,13 +163,17 @@ router.get('/special', verifyToken, (req, res) => {
 
 router.delete('/newuser/:id', (req, res) => {
     let id = req.params.id;
-    Player.remove({
+    Player.findOneAndRemove({
         creator: id
-    }, function (err, message) {
+    }, function (err, player) {
         if (err) {
             res.send(err);
         }
-        res.send("youpi");
+        User.findOne({ playercard: player._id }, (err, user) => {
+            user.playercard = null;
+            user.save();
+        })
+        res.json({ success: true });
     })
 })
 
@@ -177,10 +188,11 @@ router.post('/newuser', (req, res) => {
                 _id: cardData.creator
             }, function (err, user) {
                 user.playercard = new_Player;
+                res.json({ user: user })
+                user.save();
             })
         }
     })
-    res.send('Player card created')
 })
 
 module.exports = router

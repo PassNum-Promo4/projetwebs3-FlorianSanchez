@@ -5,9 +5,14 @@ export class PlayerService {
 
   private _playersUrl = 'http://localhost:3000/api/players';
   private _specialPlayersUrl = 'http://localhost:3000/api/special';
+  private _riotUrl = 'http://localhost:3000/api/champions';
   private _newUserUrl = 'http://localhost:3000/api/newuser';
 
   constructor(private http: HttpClient) { }
+
+  getChampions() {
+    return this.http.get<any>(this._riotUrl, {});
+  }
 
   getPlayers() {
     return this.http.get<any>(this._playersUrl);

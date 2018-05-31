@@ -1,8 +1,9 @@
 <div class="row mt-5">
   <div class="col-md-4 mb-3" *ngFor="let player of players">
     <div class="card text-center">
-      <div class="card-header">{{player.pseudo}}
-
+      <div class="card-header">
+        {{player.pseudo}}
+        <img class="avatar-champ" *ngIf="player.mainchamp" src="https://ddragon.leagueoflegends.com/cdn/7.10.1/img/champion/{{ player.mainchamp }}.png">
       </div>
       <div class="card-body">
         <h5 class="card-title">{{player.rank}}</h5>

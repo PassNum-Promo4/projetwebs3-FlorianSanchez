@@ -5,8 +5,9 @@ const playerSchema = new Schema({
     pseudo: String,
     rank: String,
     language: String,
+    mainchamp: String,
     ratio: String,
-    creator: String
+    creator: mongoose.Schema.Types.ObjectId
 })
 
 module.exports = mongoose.model('infoplayers', playerSchema);

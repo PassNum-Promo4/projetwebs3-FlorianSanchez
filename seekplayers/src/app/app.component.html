@@ -13,7 +13,7 @@
         <a class="nav-link" routerLink="/special" routerLinkActive="active">SpecialPlayers</a>
       </li>
       <li class="nav-item">
-          <a class="nav-link" routerLink="/newuser" routerLinkActive="active">My PlayerCard</a>
+          <a class="nav-link" *ngIf="_authService.loggedIn()" routerLink="/newuser" routerLinkActive="active">My PlayerCard</a>
         </li>
     </ul>
     <ul class="navbar-nav">
