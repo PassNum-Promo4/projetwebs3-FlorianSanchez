@@ -22,12 +22,12 @@
               </select>
             </div>
             <div class="form-group">
-                <label for="">Language</label>
-                <input [(ngModel)]="cardData.language" name="language" type="text" class="form-control rounded-0" required>
+                <label for="">Server</label>
+                <input [(ngModel)]="cardData.server" name="server" type="text" class="form-control rounded-0" required>
               </div>
               <div class="form-group">
-                  <label for="">Ratio</label>
-                  <input [(ngModel)]="cardData.ratio" name="ratio" type="text" class="form-control rounded-0" required>
+                  <label for="">Role</label>
+                  <input [(ngModel)]="cardData.role" name="role" type="text" class="form-control rounded-0" required>
                 </div>
             <button (click)="postPlayerData()" *ngIf="!user.playercard" type="button" class="btn btn-success float-right">Create</button>
             <button (click)="modifyCard()" *ngIf="user.playercard" type="button" class="btn btn-primary float-right">Modify</button>

@@ -4,9 +4,9 @@ const Schema = mongoose.Schema
 const playerSchema = new Schema({
     pseudo: String,
     rank: String,
-    language: String,
+    server: String,
     mainchamp: String,
-    ratio: String,
+    role: String,
     creator: mongoose.Schema.Types.ObjectId
 })
 

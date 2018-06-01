@@ -53,7 +53,7 @@ router.post('/register', (req, res) => {
             let token = jwt.sign(payload, 'secretKey')
             res.status(200).send({
                 token,
-                payload
+                payload,
             })
         }
     })
@@ -120,9 +120,9 @@ router.put('/newuser', (req, res) => {
         } else {
             player.pseudo = newCardData.pseudo;
             player.rank = newCardData.rank;
-            player.language = newCardData.language;
+            player.server = newCardData.server;
             player.mainchamp = newCardData.mainchamp;
-            player.ratio = newCardData.ratio;
+            player.role = newCardData.role;
             player.save(function (error) {
                 if (error) {
                     res.send(error)
