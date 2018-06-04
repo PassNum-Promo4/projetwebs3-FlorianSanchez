@@ -1,28 +1,39 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" href="#">SeekPlayers</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/players" routerLinkActive="active">Players</a>
-      </li>
-      <li class="nav-item">
-          <a class="nav-link" *ngIf="_authService.loggedIn()" routerLink="/newuser" routerLinkActive="active">My PlayerCard</a>
+  <div class="container">
+    <img src="assets/lol.png" routerLink="/players" class="logo">
+    <a class="navbar-brand" routerLink="/players">SeekPlayers</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/players" routerLinkActive="active">Players</a>
         </li>
-    </ul>
-    <ul class="navbar-nav">
-        <a class="nav-link" *ngIf="!_authService.loggedIn()" routerLink="/login" routerLinkActive="active">Login</a>
-        <a class="nav-link" *ngIf="!_authService.loggedIn()" routerLink="/register" routerLinkActive="active">Register</a>
-        <a class="nav-link" style="cursor:pointer" *ngIf="_authService.loggedIn()" (click)="_authService.modifyAccount()" routerLink="/account" routerLinkActive="active">Account</a>
-        <a class="nav-link" style="cursor:pointer" *ngIf="_authService.loggedIn()" (click)="_authService.logoutUser()">Logout</a>
-    </ul>
+        <li class="nav-item">
+            <a class="nav-link" *ngIf="_authService.loggedIn()" routerLink="/newuser" routerLinkActive="active">My PlayerCard</a>
+          </li>
+      </ul>
+      <ul class="navbar-nav">
+          <a class="nav-link" *ngIf="!_authService.loggedIn()" routerLink="/login" routerLinkActive="active">Login</a>
+          <a class="nav-link" *ngIf="!_authService.loggedIn()" routerLink="/register" routerLinkActive="active">Register</a>
+          <a class="nav-link" style="cursor:pointer" *ngIf="_authService.loggedIn()" (click)="_authService.modifyAccount()" routerLink="/account" routerLinkActive="active">Account</a>
+          <a class="nav-link" style="cursor:pointer" *ngIf="_authService.loggedIn()" (click)="_authService.logoutUser()">Logout</a>
+      </ul>
+    </div>
   </div>
 </nav>   
 
 <div class="container">
     <simple-notifications></simple-notifications>
+    <div class="content">
       <router-outlet></router-outlet>
+    </div>
 </div>
+
+<footer>
+  <div class="container">
+    &copy; 2018 - Florian Sanchez - made with <i class="fa fa-heart"></i> with Angular <img src="/assets/angular.png">
+  </div>
+</footer>

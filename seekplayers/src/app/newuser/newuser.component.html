@@ -4,6 +4,7 @@
         <div class="card-header">
           <h3 class="mb-0">My card</h3>
           <img class="avatar-champ" *ngIf="cardData.mainchamp" src="https://ddragon.leagueoflegends.com/cdn/7.10.1/img/champion/{{ cardData.mainchamp }}.png">
+          <img class="avatar-rank" *ngIf="cardData.rank" src="/assets/ranks/{{ cardData.rank }}.png">
         </div>
         <div class="card-body">
           <form class="form">

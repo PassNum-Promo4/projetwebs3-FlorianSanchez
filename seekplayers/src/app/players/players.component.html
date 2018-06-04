@@ -28,10 +28,11 @@
 
 
 <div class="row mt-5">
-  <div class="col-md-6 mb-3" *ngFor="let player of playersFiltered | filter : searchText">
+  <div class="col-md-12 mb-3" *ngFor="let player of playersFiltered | filter : searchText">
     <div class="card text-center">
       <div class="card-header">
         {{player.pseudo}}
+        <img class="avatar-rank" *ngIf="player.rank" src="/assets/ranks/{{ player.rank }}.png">
         <img class="avatar-champ" *ngIf="player.mainchamp" src="https://ddragon.leagueoflegends.com/cdn/7.10.1/img/champion/{{ player.mainchamp }}.png">
       </div>
       <div class="card-body">

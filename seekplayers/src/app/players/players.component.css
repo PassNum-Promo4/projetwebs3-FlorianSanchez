@@ -6,3 +6,10 @@
     top: -22px;
     right: -26px;
 }
+
+.avatar-rank {
+    width: 90px;
+    position: absolute;
+    top: -33px;
+    left: -43px;
+}
