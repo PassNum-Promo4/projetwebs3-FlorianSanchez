@@ -13,7 +13,15 @@
             </div>
             <div class="form-group">
               <label for="">Rank</label>
-              <input [(ngModel)]="cardData.rank" name="rank" type="text" class="form-control rounded-0" required>
+              <select [(ngModel)]="cardData.rank" name="rank" type="text" class="form-control rounded-0" required>
+                  <option value="Challenger">Challenger</option>
+                  <option value="Master">Master</option>
+                  <option value="Diamond">Diamond</option>
+                  <option value="Platinum">Platinum</option>
+                  <option value="Gold">Gold</option>
+                  <option value="Silver">Silver</option>
+                  <option value="Bronze">Bronze</option>
+                </select>
             </div>
             <div class="form-group">
               <label for="">Main champion</label>
@@ -23,11 +31,29 @@
             </div>
             <div class="form-group">
                 <label for="">Server</label>
-                <input [(ngModel)]="cardData.server" name="server" type="text" class="form-control rounded-0" required>
+                <select [(ngModel)]="cardData.server" name="server" type="text" class="form-control rounded-0" required>
+                  <option value="North America">North America</option>
+                  <option value="EU West">EU West</option>
+                  <option value="EU Nordic & East">EU Nordic & East</option>
+                  <option value="Latin America North">Latin America North</option>
+                  <option value="Latin America South">Latin America South</option>
+                  <option value="Brazil">Brazil</option>
+                  <option value="Turkey">Turkey</option>
+                  <option value="Russia">Russia</option>
+                  <option value="Oceania">Oceania</option>
+                  <option value="Japan">Japan</option>
+                  <option value="Korea">Korea</option>
+                  </select>
               </div>
               <div class="form-group">
                   <label for="">Role</label>
-                  <input [(ngModel)]="cardData.role" name="role" type="text" class="form-control rounded-0" required>
+                  <select [(ngModel)]="cardData.role" name="role" type="text" class="form-control rounded-0" required>
+                    <option value="Top">Top</option>
+                    <option value="Jungle">Jungle</option>
+                    <option value="Mid">Mid</option>
+                    <option value="Adc">Adc</option>
+                    <option value="Support">Support</option>
+                    </select>
                 </div>
             <button (click)="postPlayerData()" *ngIf="!user.playercard" type="button" class="btn btn-success float-right">Create</button>
             <button (click)="modifyCard()" *ngIf="user.playercard" type="button" class="btn btn-primary float-right">Modify</button>

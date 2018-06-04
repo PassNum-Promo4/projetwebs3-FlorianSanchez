@@ -1,5 +1,34 @@
+
+<div class="row">
+<div class="form-group pt-4 col align-self-start">
+  <h3>Filter by rank</h3>
+<select class="custom-select" [(ngModel)]="rank" (change)="playersFilter()">
+    
+  <option value="*">All</option>
+  <option value="Challenger">Challenger</option>
+  <option value="Master">Master</option>
+  <option value="Diamond">Diamond</option>
+  <option value="Platinum">Platinum</option>
+  <option value="Gold">Gold</option>
+  <option value="Silver">Silver</option>
+  <option value="Bronze">Bronze</option>
+</select>
+<!-- <input class="col-md-4" [(ngModel)]="searchText" placeholder="search text goes here"> -->
+ 
+</div>
+<div class="form-group mr-sm-2 pt-4 col align-self-end">
+    <h3>Search bar</h3>
+
+    <input class="form-control" type="text" [(ngModel)]="searchText" placeholder="search text goes here">
+
+</div>
+</div>
+
+
+
+
 <div class="row mt-5">
-  <div class="col-md-4 mb-3" *ngFor="let player of players">
+  <div class="col-md-6 mb-3" *ngFor="let player of playersFiltered | filter : searchText">
     <div class="card text-center">
       <div class="card-header">
         {{player.pseudo}}

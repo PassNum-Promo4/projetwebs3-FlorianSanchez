@@ -4,7 +4,6 @@ import { HttpClient } from '@angular/common/http';
 export class PlayerService {
 
   private _playersUrl = 'http://localhost:3000/api/players';
-  private _specialPlayersUrl = 'http://localhost:3000/api/special';
   private _riotUrl = 'http://localhost:3000/api/champions';
   private _newUserUrl = 'http://localhost:3000/api/newuser';
 
@@ -18,9 +17,6 @@ export class PlayerService {
     return this.http.get<any>(this._playersUrl);
   }
 
-  getSpecialPlayers() {
-    return this.http.get<any>(this._specialPlayersUrl);
-  }
 
   postPlayerData(cardData) {
     return this.http.post<any>(this._newUserUrl, cardData);

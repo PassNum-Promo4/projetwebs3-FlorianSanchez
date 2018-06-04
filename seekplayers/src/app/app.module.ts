@@ -9,11 +9,15 @@ import { PlayersComponent } from './players/players.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { PlayerService } from './player.service';
-import { SpecialPlayersComponent } from './special-players/special-players.component';
 import { AuthGuard } from './auth.guard';
 import { TokenInterceptorService } from './token-interceptor.service';
 import { AccountComponent } from './account/account.component';
 import { NewuserComponent } from './newuser/newuser.component';
+import { SimpleNotificationsModule } from 'angular2-notifications';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FilterPipe} from './pipes/filter.pipe';
+
+
 
 @NgModule({
   declarations: [
@@ -21,20 +25,24 @@ import { NewuserComponent } from './newuser/newuser.component';
     RegisterComponent,
     LoginComponent,
     PlayersComponent,
-    SpecialPlayersComponent,
     AccountComponent,
-    NewuserComponent
+    NewuserComponent,
+    FilterPipe
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    SimpleNotificationsModule.forRoot(),
+
   ],
   providers: [AuthService, PlayerService, AuthGuard, {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
-    multi: true
+    multi: true,
   }],
   bootstrap: [AppComponent]
 })

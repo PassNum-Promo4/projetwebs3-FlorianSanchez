@@ -3,7 +3,6 @@ import {Routes, RouterModule} from '@angular/router';
 import { PlayersComponent } from './players/players.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { SpecialPlayersComponent } from './special-players/special-players.component';
 import { AuthGuard } from './auth.guard';
 import { AccountComponent } from './account/account.component';
 import { NewuserComponent } from './newuser/newuser.component';
@@ -25,11 +24,6 @@ const routes: Routes = [
     {
         path: 'register',
         component: RegisterComponent
-    },
-    {
-        path: 'special',
-        component: SpecialPlayersComponent,
-        canActivate: [AuthGuard]
     },
     {
         path: 'account',

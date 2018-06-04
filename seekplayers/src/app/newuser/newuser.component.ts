@@ -3,6 +3,8 @@ import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { PlayerService } from '../player.service';
 import { log } from 'util';
+import { NotificationsService } from 'angular2-notifications';
+
 
 @Component({
     selector: 'app-newuser',
@@ -19,7 +21,8 @@ export class NewuserComponent implements OnInit {
     public user: any;
     public champions: any[] = [];
     public champions_obj: any;
-    constructor(public _auth: AuthService, public _router: Router, public _playerService: PlayerService) { }
+    constructor(public _auth: AuthService, public _router: Router, public _playerService: PlayerService,
+        public _notifications: NotificationsService) { }
 
     modifyCard() {
         const creator = localStorage.getItem('_id');
@@ -28,6 +31,15 @@ export class NewuserComponent implements OnInit {
             res => {
                 this.user.playercard = this.cardData;
                 localStorage.setItem('user', JSON.stringify(this.user));
+                const toast = this._notifications.success('', res.message, {
+                    timeOut: 3000,
+                    showProgressBar: false,
+                    pauseOnHover: false,
+                    clickToClose: true
+                });
+                toast.click.subscribe(() => {
+                    this.modifyCard();
+                });
             },
             err => console.log(err)
         );
@@ -40,6 +52,15 @@ export class NewuserComponent implements OnInit {
                 delete this.user.playercard;
                 this.cardData = {};
                 localStorage.setItem('user', JSON.stringify(this.user));
+                const toast = this._notifications.success('', res.message, {
+                    timeOut: 3000,
+                    showProgressBar: false,
+                    pauseOnHover: false,
+                    clickToClose: true
+                  });
+                  toast.click.subscribe(() => {
+                    this.deleteCard();
+                });
             },
             err => console.log(err)
         );
@@ -52,6 +73,15 @@ export class NewuserComponent implements OnInit {
             res => {
                 localStorage.setItem('user', JSON.stringify(res.user));
                 this.user = this._auth.getUser();
+                const toast = this._notifications.success('', res.message, {
+                    timeOut: 3000,
+                    showProgressBar: false,
+                    pauseOnHover: false,
+                    clickToClose: true
+                  });
+                  toast.click.subscribe(() => {
+                    this.deleteCard();
+                });
             },
             err => console.log(err)
         );
