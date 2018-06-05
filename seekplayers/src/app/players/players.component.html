@@ -1,47 +1,96 @@
-
 <div class="row">
-<div class="form-group pt-4 col align-self-start">
-  <h3>Filter by rank</h3>
-<select class="custom-select" [(ngModel)]="rank" (change)="playersFilter()">
-    
-  <option value="*">All</option>
-  <option value="Challenger">Challenger</option>
-  <option value="Master">Master</option>
-  <option value="Diamond">Diamond</option>
-  <option value="Platinum">Platinum</option>
-  <option value="Gold">Gold</option>
-  <option value="Silver">Silver</option>
-  <option value="Bronze">Bronze</option>
-</select>
-<!-- <input class="col-md-4" [(ngModel)]="searchText" placeholder="search text goes here"> -->
- 
-</div>
-<div class="form-group mr-sm-2 pt-4 col align-self-end">
+  <div class="form-group pt-4 col align-self-start">
+    <h3>Filter by rank</h3>
+    <select class="custom-select" [(ngModel)]="rank" (change)="playersFilter()">
+
+      <option value="*">All</option>
+      <option value="Challenger">Challenger</option>
+      <option value="Master">Master</option>
+      <option value="Diamond">Diamond</option>
+      <option value="Platinum">Platinum</option>
+      <option value="Gold">Gold</option>
+      <option value="Silver">Silver</option>
+      <option value="Bronze">Bronze</option>
+    </select>
+    <!-- <input class="col-md-4" [(ngModel)]="searchText" placeholder="search text goes here"> -->
+
+  </div>
+  <div class="form-group mr-sm-2 pt-4 col align-self-end">
     <h3>Search bar</h3>
 
     <input class="form-control" type="text" [(ngModel)]="searchText" placeholder="search text goes here">
 
-</div>
+  </div>
 </div>
 
 
 
 
 <div class="row mt-5">
-  <div class="col-md-12 mb-3" *ngFor="let player of playersFiltered | filter : searchText">
-    <div class="card text-center">
-      <div class="card-header">
-        {{player.pseudo}}
-        <img class="avatar-rank" *ngIf="player.rank" src="/assets/ranks/{{ player.rank }}.png">
-        <img class="avatar-champ" *ngIf="player.mainchamp" src="https://ddragon.leagueoflegends.com/cdn/7.10.1/img/champion/{{ player.mainchamp }}.png">
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">{{player.rank}}</h5>
-        <p class="card-text">{{player.server}}</p>
-      </div>
-      <div class="card-footer text-center">
-        <p>{{player.role}}</p>
+  <div class="col-md-12 mb-3 hihi p-0" *ngFor="let player of playersFiltered | filter : searchText">
+    <div class="bordering">
+      <div class="container">
+        <div class="card-body row">
+
+          <div class="col row  text-left m-1">
+            <img class="avatar-champ" *ngIf="player.mainchamp" src="https://ddragon.leagueoflegends.com/cdn/7.10.1/img/champion/{{ player.mainchamp }}.png">
+            <div class="column">
+              <h5 class="text-white">{{player.pseudo}}</h5>
+              <h6 class="text-secondary">Pseudo</h6>
+            </div>
+          </div>
+          <div class="col column  text-left m-1">
+            <h5 class="text-white">{{player.rank}}</h5>
+            <h6 class="text-secondary">Rank</h6>
+          </div>
+
+          <div class="col column  text-left m-1">
+            <h5 class="text-white">{{player.server}}</h5>
+            <h6 class="text-secondary">Server</h6>
+          </div>
+
+          <div class="col column text-left m-1">
+            <h5 class="text-white">{{player.role}}</h5>
+            <h6 class="text-secondary">Role</h6>
+          </div>
+          <img class="avatar-rank" *ngIf="player.rank" src="/assets/ranks/{{ player.rank }}.png">
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+<!-- <div class="bg-dark container d-flex align-items-center" *ngFor="let player of playersFiltered | filter : searchText">
+
+  <div class="name mr-auto text-left">
+    <h5 class="text-white">
+      {{player.pseudo}}
+    </h5>
+    <p>
+      <img src="" alt="">
+      <img src="" alt="">
+    </p>
+  </div>
+
+  <div class="rp ml-auto text-center tip hidden-md-down">
+    <p class="value"></p>
+    <p class="text"></p>
+  </div>  
+
+  <div class="ip text-center tip hidden-md-down">
+
+  </div>
+
+  <div class="rate text-center">
+
+  </div>
+
+  <div class="text-center">
+
+  </div>
+
+  <div class="text-center">
+    
+  </div>
+
+</div> -->

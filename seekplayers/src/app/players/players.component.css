@@ -1,15 +1,27 @@
 .avatar-champ {
-    border-radius: 50%;
-    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.8);
-    width: 90px;
-    position: absolute;
-    top: -22px;
-    right: -26px;
+    width: 75px;
+    height: 75px;
+    position: relative;
+    right: 20px;
 }
 
 .avatar-rank {
+    position: relative;
     width: 90px;
-    position: absolute;
-    top: -33px;
-    left: -43px;
+    height: 80px;
+    opacity: 1;
 }
+
+.hihi:nth-child(odd) {
+    background-color: #282f3f;
+}
+
+.hihi:nth-child(even) {
+    background-color: #3d4353;
+
+}
+
+.bordering {
+        box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.8);
+}
+
