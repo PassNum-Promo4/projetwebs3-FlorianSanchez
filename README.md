@@ -10,5 +10,5 @@ Read these instructions for installing the project on your computer.
 
 4/ Now let's run the application, run the command `ng serve` on **seekplayers folder**, then run the command `node server` on **server folder**.
 
-5/ On your web-browser you can see the project at [localhost:4200](http://localhost:4200) adress
+5/ On your web-browser you can see the project at <http://localhost:4200>
 
