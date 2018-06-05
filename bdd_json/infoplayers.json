@@ -1,0 +1,9 @@
+{"_id":{"$oid":"5b142e0eb789b03a5ef35eb9"},"creator":{"$oid":"5b142dccb789b03a5ef35eb8"},"pseudo":"a","rank":"Challenger","mainchamp":"Rakan","server":"EU West","role":"Adc","__v":0}
+{"_id":{"$oid":"5b142e21b789b03a5ef35ebb"},"creator":{"$oid":"5b142e17b789b03a5ef35eba"},"pseudo":"b","rank":"Diamond","mainchamp":"Warwick","server":"Latin America North","role":"Adc","__v":0}
+{"_id":{"$oid":"5b142e38b789b03a5ef35ebd"},"creator":{"$oid":"5b142e29b789b03a5ef35ebc"},"pseudo":"c","rank":"Silver","mainchamp":"Fiddlesticks","server":"Russia","role":"Mid","__v":0}
+{"_id":{"$oid":"5b158a339aa12e1a8067896f"},"creator":{"$oid":"5b1036ecc82f66250ac9e324"},"role":"Mid","server":"EU Nordic \u0026 East","mainchamp":"Shaco","rank":"Gold","pseudo":"ToToSe","__v":0}
+{"_id":{"$oid":"5b158a4630185d38506def5b"},"creator":{"$oid":"5b1036ecc82f66250ac9e324"},"role":"Mid","server":"EU Nordic \u0026 East","mainchamp":"Shaco","rank":"Gold","pseudo":"ToToSe","__v":0}
+{"_id":{"$oid":"5b158a9ce7d65e0c80a2135a"},"creator":{"$oid":"5b158a70e7d65e0c80a21358"},"pseudo":"ToToSe","rank":"Gold","mainchamp":"Vayne","server":"EU West","role":"Adc","__v":0}
+{"_id":{"$oid":"5b165c17518371097031cf4c"},"pseudo":"a","mainchamp":"Annie","rank":"Challenger","server":"North America","role":"Jungle","creator":{"$oid":"5b1557501e305e041f965614"},"__v":0}
+{"_id":{"$oid":"5b165cae518371097031cf4e"},"creator":{"$oid":"5b165ca5518371097031cf4d"},"pseudo":"a","rank":"Platinum","mainchamp":"Nidalee","server":"Latin America South","role":"Adc","__v":0}
+{"_id":{"$oid":"5b16636d59eff06a29775de5"},"creator":{"$oid":"5b16633d59eff06a29775de4"},"pseudo":"snoopy-boy","rank":"Challenger","mainchamp":"Garen","server":"EU West","role":"Top","__v":0}
