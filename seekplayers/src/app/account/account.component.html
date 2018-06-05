@@ -8,12 +8,15 @@
         <form class="form">
           <div class="form-group">
             <label for="">Email</label>
+            <!-- getback the mail user on userdata.mail -->
             <input [(ngModel)]="UserData.email" name="email" type="text" class="form-control rounded-0" required>
           </div>
           <div class="form-group">
             <label for="">Password</label>
+            <!-- getback the password user on userdata.password -->
             <input [(ngModel)]="UserData.password" name="password" type="password" class="form-control rounded-0" required>
           </div>
+          <!-- call functions to click events -->
           <button (click)="modifyAccount()" type="button" class="btn btn-success float-left">Modify</button>
           <button (click)="deleteAccount()" type="button" class="btn btn-danger float-right" routerLink="/login" routerLinkActive="active">Delete</button>
         </form>

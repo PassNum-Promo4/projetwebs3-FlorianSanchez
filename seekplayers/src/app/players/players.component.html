@@ -1,6 +1,7 @@
 <div class="row">
   <div class="form-group pt-4 col align-self-start">
     <h3>Filter by rank</h3>
+    <!-- save value filter on rank variable -->
     <select class="custom-select" [(ngModel)]="rank" (change)="playersFilter()">
 
       <option value="*">All</option>
@@ -12,26 +13,24 @@
       <option value="Silver">Silver</option>
       <option value="Bronze">Bronze</option>
     </select>
-    <!-- <input class="col-md-4" [(ngModel)]="searchText" placeholder="search text goes here"> -->
 
   </div>
   <div class="form-group mr-sm-2 pt-4 col align-self-end">
     <h3>Search bar</h3>
-
+    <!-- display research bar and save value to searchText  -->
     <input class="form-control" type="text" [(ngModel)]="searchText" placeholder="search text goes here">
 
   </div>
 </div>
 
-
-
-
 <div class="row mt-5">
+  <!-- let's create a player cards of playersFiltered tab -->
+  <!-- add a pipe filter -->
   <div class="col-md-12 mb-3 hihi p-0" *ngFor="let player of playersFiltered | filter : searchText">
     <div class="bordering">
       <div class="container">
         <div class="card-body row">
-
+          <!-- display all property on object player -->
           <div class="col row  text-left m-1">
             <img class="avatar-champ" *ngIf="player.mainchamp" src="https://ddragon.leagueoflegends.com/cdn/7.10.1/img/champion/{{ player.mainchamp }}.png">
             <div class="column">
@@ -59,38 +58,3 @@
     </div>
   </div>
 </div>
-
-<!-- <div class="bg-dark container d-flex align-items-center" *ngFor="let player of playersFiltered | filter : searchText">
-
-  <div class="name mr-auto text-left">
-    <h5 class="text-white">
-      {{player.pseudo}}
-    </h5>
-    <p>
-      <img src="" alt="">
-      <img src="" alt="">
-    </p>
-  </div>
-
-  <div class="rp ml-auto text-center tip hidden-md-down">
-    <p class="value"></p>
-    <p class="text"></p>
-  </div>  
-
-  <div class="ip text-center tip hidden-md-down">
-
-  </div>
-
-  <div class="rate text-center">
-
-  </div>
-
-  <div class="text-center">
-
-  </div>
-
-  <div class="text-center">
-    
-  </div>
-
-</div> -->

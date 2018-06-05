@@ -16,17 +16,17 @@ export class RegisterComponent implements OnInit {
   ) { }
 
   registerUser() {
-    this._auth.registerUser(this.registerUserData)
+    this._auth.registerUser(this.registerUserData)    // call registerUser methode on api with a parameter registerUserData
       .subscribe(
         res => {
-            localStorage.setItem('user', JSON.stringify(res.user));
-            localStorage.setItem('token', res.token);
-            localStorage.setItem('_id', res.payload.subject);
-            this._router.navigate(['/players']);
+            localStorage.setItem('user', JSON.stringify(res.user));   // save to localstorage user id
+            localStorage.setItem('token', res.token);                  // save to localstorage token id
+            localStorage.setItem('_id', res.payload.subject);            // save to localstorage _id value payload
+            this._router.navigate(['/players']);                // return to players page
         },
         err => {
           console.log(err);
-          const toast = this._notifications.error('', err.error.message, {
+          const toast = this._notifications.error('', err.error.message, {     // notifications
             timeOut: 3000,
             showProgressBar: false,
             pauseOnHover: false,
@@ -38,7 +38,6 @@ export class RegisterComponent implements OnInit {
         }
       );
   }
-
 
   ngOnInit() {
 }

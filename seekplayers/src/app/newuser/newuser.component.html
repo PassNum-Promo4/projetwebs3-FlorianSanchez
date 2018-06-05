@@ -1,3 +1,4 @@
+
 <div class="row pt-5">
     <div class="col-md-6 mx-auto">
       <div class="card rounded-0">
@@ -56,6 +57,7 @@
                     <option value="Support">Support</option>
                     </select>
                 </div>
+                <!-- test if user got a playercard then display the buttons  -->
             <button (click)="postPlayerData()" *ngIf="!user.playercard" type="button" class="btn btn-success float-right">Create</button>
             <button (click)="modifyCard()" *ngIf="user.playercard" type="button" class="btn btn-primary float-right">Modify</button>
             <button (click)="deleteCard()" *ngIf="user.playercard" type="button" class="btn btn-danger float-left">Delete</button>

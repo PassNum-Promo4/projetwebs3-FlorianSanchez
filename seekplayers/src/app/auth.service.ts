@@ -10,7 +10,7 @@ export class AuthService {
   private _accountUrl = 'http://localhost:3000/api/account';
   public user: any = null;
 
-  constructor(private http: HttpClient, private _router: Router) {
+  constructor(private http: HttpClient, private _router: Router) {    // All routes for backend api methodes
   }
 
   registerUser(user) {

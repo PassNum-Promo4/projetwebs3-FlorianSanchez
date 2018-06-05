@@ -14,18 +14,18 @@ export class LoginComponent implements OnInit {
   loginUserData = {};
   constructor(public _auth: AuthService, public _router: Router, public _notifications: NotificationsService) { }
 
-  loginUser() {
+  loginUser() {   // call loginUser methode to api
     this._auth.loginUser(this.loginUserData)
       .subscribe(
         res => {console.log(res);
-          localStorage.setItem('user', JSON.stringify(res.user));
+          localStorage.setItem('user', JSON.stringify(res.user));   // set id to user and token
           localStorage.setItem('token', res.token);
           localStorage.setItem('_id', res.user._id);
-          this._router.navigate(['/players']);
+          this._router.navigate(['/players']);                // return to players page
         },
         err => {
           console.log(err);
-          const toast = this._notifications.error('', err.error.message, {
+          const toast = this._notifications.error('', err.error.message, {      // notifications
             timeOut: 3000,
             showProgressBar: false,
             pauseOnHover: false,

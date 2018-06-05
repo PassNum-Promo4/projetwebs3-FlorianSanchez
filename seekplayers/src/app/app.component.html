@@ -1,3 +1,4 @@
+<!-- Layout for my App -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container">
     <img src="assets/lol.png" routerLink="/players" class="logo">
@@ -16,6 +17,7 @@
           </li>
       </ul>
       <ul class="navbar-nav">
+          <!-- test with loggedin method then hidden or display the buttons -->
           <a class="nav-link" *ngIf="!_authService.loggedIn()" routerLink="/login" routerLinkActive="active">Login</a>
           <a class="nav-link" *ngIf="!_authService.loggedIn()" routerLink="/register" routerLinkActive="active">Register</a>
           <a class="nav-link" style="cursor:pointer" *ngIf="_authService.loggedIn()" (click)="_authService.modifyAccount()" routerLink="/account" routerLinkActive="active">Account</a>
@@ -24,7 +26,7 @@
     </div>
   </div>
 </nav>   
-
+    <!-- call to notifications and router modules -->
 <div class="container">
     <simple-notifications></simple-notifications>
     <div class="content">

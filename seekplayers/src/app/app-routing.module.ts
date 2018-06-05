@@ -7,7 +7,7 @@ import { AuthGuard } from './auth.guard';
 import { AccountComponent } from './account/account.component';
 import { NewuserComponent } from './newuser/newuser.component';
 
-const routes: Routes = [
+const routes: Routes = [            // ALL routes on my front-end
     {
         path: '',
         redirectTo: '/players',

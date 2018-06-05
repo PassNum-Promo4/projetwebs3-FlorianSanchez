@@ -7,7 +7,7 @@ export class PlayerService {
   private _riotUrl = 'http://localhost:3000/api/champions';
   private _newUserUrl = 'http://localhost:3000/api/newuser';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { }   // All routes for backend api methodes
 
   getChampions() {
     return this.http.get<any>(this._riotUrl, {});
@@ -16,7 +16,6 @@ export class PlayerService {
   getPlayers() {
     return this.http.get<any>(this._playersUrl);
   }
-
 
   postPlayerData(cardData) {
     return this.http.post<any>(this._newUserUrl, cardData);
